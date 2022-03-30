@@ -1,0 +1,6 @@
+services:
+    oh_media_timezone.timezone_listener:
+        class: OHMedia\TimezoneBundle\EventListener\TimezoneListener
+        arguments: ["@security.token_storage", "%oh_media_timezone.timezone%"]
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
