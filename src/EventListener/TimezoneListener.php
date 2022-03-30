@@ -25,7 +25,7 @@ class TimezoneListener
 
         $timezone = null;
 
-        if (!in_array(TimezoneUser::class, $this->getTraits($user))) {
+        if ($user && !in_array(TimezoneUser::class, $this->getTraits($user))) {
             $timezone = $user->getTimezone();
         }
 
