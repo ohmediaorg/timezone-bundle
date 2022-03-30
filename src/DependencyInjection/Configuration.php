@@ -22,12 +22,9 @@ class Configuration implements ConfigurationInterface
 
         $treeBuilder->getRootNode()
             ->children()
-                ->scalarNode('timezone')
+                ->enumNode('timezone')
                     ->defaultValue('America/Regina')
-                    ->validate()
-                    ->ifNotInArray(DateTimeZone::listIdentifiers())
-                        ->thenInvalid('Invalid timezone "%s"')
-                    ->end()
+                    ->values(DateTimeZone::listIdentifiers())
                 ->end()
             ->end()
         ;
