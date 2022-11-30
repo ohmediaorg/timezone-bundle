@@ -1,11 +1,11 @@
 # Overview
 
-This bundle ensures all Dbal datetime types are stored in the UTC timezone for
-consistency. When the values are read from the database, they are converted back
-to a timezone of your choosing.
+This bundle ensures all Dbal datetime types are stored and loaded in the UTC \
+timezone for consistency.
 
 The bundle also offers a kernel-level timezone listener that makes sure the
-default PHP timezone is always set.
+default PHP timezone is set to a value of your choosing. This ensures all
+DateTime values are displayed properly for the user.
 
 # Installation
 
@@ -53,3 +53,9 @@ use Symfony\Component\Form\Extension\Core\Type\TimezoneType;
 
 $builder->add('timezone', TimezoneType::class);
 ```
+
+# Forms
+
+To ensure entity DateTime values are displayed correctly in forms, please use
+`OHMedia\TimezoneBundle\Form\Type\DateTimeType` which is an override of
+Symfony Forms default `DateTimeType`.
