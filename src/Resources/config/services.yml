@@ -9,3 +9,8 @@ services:
         arguments: ["@oh_media_timezone.timezone"]
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+
+    OHMedia\TimezoneBundle\Form\Type\DateTimeType:
+        arguments: ["@oh_media_timezone.timezone"]
+        tags:
+            - { name: form.type }
