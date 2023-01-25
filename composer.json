@@ -1,5 +1,5 @@
 {
-    "name": "justin-oh/timezone-bundle",
+    "name": "ohmediaorg/timezone-bundle",
     "type": "symfony-bundle",
     "description": "Symfony TimezoneBundle",
     "keywords": ["timezones"],
