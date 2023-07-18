@@ -43,7 +43,7 @@ oh_media_timezone:
 ```
 
 You can also have timezones per user if your user entity uses the Trait
-`OHMedia\TimezoneBundle\Entity\Traits\TimezoneUser`. This will add a property
+`OHMedia\TimezoneBundle\Entity\Traits\TimezoneUserTrait`. This will add a property
 called `timezone` to your user. You can update your user form like so:
 
 ```php

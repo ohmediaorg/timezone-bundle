@@ -2,7 +2,7 @@
 
 namespace OHMedia\TimezoneBundle\Service;
 
-use OHMedia\TimezoneBundle\Traits\TimezoneUser;
+use OHMedia\TimezoneBundle\Traits\TimezoneUserTrait;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class Timezone
@@ -24,7 +24,7 @@ class Timezone
 
         $timezone = null;
 
-        if ($user && !in_array(TimezoneUser::class, $this->getTraits($user))) {
+        if ($user && !in_array(TimezoneUserTrait::class, $this->getTraits($user))) {
             $timezone = $user->getTimezone();
         }
 

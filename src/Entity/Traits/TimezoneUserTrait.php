@@ -4,7 +4,7 @@ namespace OHMedia\TimezoneBundle\Entity\Traits;
 
 use Doctrine\ORM\Mapping as ORM;
 
-trait TimezoneUser
+trait TimezoneUserTrait
 {
     #[ORM\Column(type: 'string', length: 64, nullable: true)]
     protected $timezone;
