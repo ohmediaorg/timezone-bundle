@@ -2,7 +2,6 @@
 
 namespace OHMedia\TimezoneBundle\DependencyInjection;
 
-use DateTimeZone;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -24,7 +23,7 @@ class Configuration implements ConfigurationInterface
             ->children()
                 ->enumNode('timezone')
                     ->defaultValue('America/Regina')
-                    ->values(DateTimeZone::listIdentifiers())
+                    ->values(\DateTimeZone::listIdentifiers())
                 ->end()
             ->end()
         ;

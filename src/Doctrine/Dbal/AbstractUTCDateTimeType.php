@@ -2,15 +2,13 @@
 
 namespace OHMedia\TimezoneBundle\Doctrine\Dbal;
 
-use DateTimeInterface;
-use DateTimeZone;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Types\DateTimeType;
 
 abstract class AbstractUTCDateTimeType extends DateTimeType
 {
-    abstract protected function convertValue($formatString, $value, DateTimeZone $tz);
+    abstract protected function convertValue($formatString, $value, \DateTimeZone $tz);
 
     /**
      * @var \DateTimeZone
@@ -19,7 +17,7 @@ abstract class AbstractUTCDateTimeType extends DateTimeType
 
     public function convertToDatabaseValue($value, AbstractPlatform $platform): mixed
     {
-        if ($value instanceof DateTimeInterface) {
+        if ($value instanceof \DateTimeInterface) {
             $value = $value->setTimezone(self::getUtc());
         }
 
@@ -28,7 +26,7 @@ abstract class AbstractUTCDateTimeType extends DateTimeType
 
     public function convertToPHPValue($value, AbstractPlatform $platform): mixed
     {
-        if (null === $value || $value instanceof DateTimeInterface) {
+        if (null === $value || $value instanceof \DateTimeInterface) {
             return $value;
         }
 
@@ -49,8 +47,8 @@ abstract class AbstractUTCDateTimeType extends DateTimeType
         return $converted;
     }
 
-    private static function getUtc(): DateTimeZone
+    private static function getUtc(): \DateTimeZone
     {
-        return self::$utc ?: self::$utc = new DateTimeZone('UTC');
+        return self::$utc ?: self::$utc = new \DateTimeZone('UTC');
     }
 }
