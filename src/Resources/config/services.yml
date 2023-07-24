@@ -12,5 +12,4 @@ services:
 
     OHMedia\TimezoneBundle\Form\Type\DateTimeType:
         arguments: ["@oh_media_timezone.timezone"]
-        tags:
-            - { name: form.type }
+        tags: ["form.type"]
