@@ -50,7 +50,7 @@ class Timezone
 
         do {
             $traits = array_merge(class_uses($class), $traits);
-        } while($class = get_parent_class($class));
+        } while ($class = get_parent_class($class));
 
         foreach ($traits as $trait => $same) {
             $traits = array_merge(class_uses($trait), $traits);
