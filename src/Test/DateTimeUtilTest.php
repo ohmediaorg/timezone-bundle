@@ -7,10 +7,33 @@ final class DateTimeUtilTest extends TestCase
 {
     public function testGetDateTimeUtc(): void
     {
-        $datetime = DateTimeUtil::getDateTimeUtc();
+        $string = 'tomorrow';
 
-        $this->assertTrue($datetime instanceof \DateTimeImmutable);
+        $datetime1 = new \DateTimeImmutable($string, new \DateTimeZone('UTC'));
 
-        $this->assertSame($datetime->getTimeZone()->getName(), 'UTC');
+        $datetime2 = DateTimeUtil::getDateTimeUtc($string);
+
+        $this->assertEquals($datetime1, $datetime2);
+    }
+
+    public function testGetDateTimeZoneUtc(): void
+    {
+        $timezone = DateTimeUtil::getDateTimeZoneUtc();
+
+        $this->assertSame($timezone->getName(), 'UTC');
+    }
+
+    public function testIsFutureAndIsPast(): void
+    {
+        $tomorrow = new \DateTime('tomorrow');
+        $yesterday = new \DateTime('yesterday');
+
+        $this->assertTrue(DateTimeUtil::isFuture($tomorrow));
+
+        $this->assertFalse(DateTimeUtil::isFuture($yesterday));
+
+        $this->assertTrue(DateTimeUtil::isPast($yesterday));
+
+        $this->assertFalse(DateTimeUtil::isPast($tomorrow));
     }
 }
