@@ -16,7 +16,7 @@ class DateTimeType extends AbstractType
         $this->timezone = $timezone;
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'model_timezone' => 'UTC',
