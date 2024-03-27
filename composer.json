@@ -12,8 +12,8 @@
     ],
     "require": {
         "doctrine/doctrine-bundle": "^2.1",
-        "php": ">=7.2",
-        "symfony/framework-bundle": "5.4.* || 6.4.*"
+        "php": ">=8.2",
+        "symfony/framework-bundle": "6.4.*"
     },
     "autoload": {
         "psr-4": { "OHMedia\\TimezoneBundle\\": "src/" }
