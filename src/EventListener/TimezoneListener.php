@@ -7,11 +7,8 @@ use Symfony\Component\HttpKernel\Event\RequestEvent;
 
 class TimezoneListener
 {
-    private $timezone;
-
-    public function __construct(Timezone $timezone)
+    public function __construct(private Timezone $timezone)
     {
-        $this->timezone = $timezone;
     }
 
     public function onKernelRequest(RequestEvent $event)

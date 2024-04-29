@@ -7,13 +7,10 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 
 class Timezone
 {
-    private $tokenStorage;
-    private $defaultTimezone;
-
-    public function __construct(TokenStorageInterface $tokenStorage, $defaultTimezone)
-    {
-        $this->tokenStorage = $tokenStorage;
-        $this->defaultTimezone = $defaultTimezone;
+    public function __construct(
+        private TokenStorageInterface $tokenStorage,
+        private string $defaultTimezone
+    ) {
     }
 
     public function set(): self

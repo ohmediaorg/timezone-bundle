@@ -9,11 +9,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class DateTimeType extends AbstractType
 {
-    private $timezone;
-
-    public function __construct(Timezone $timezone)
+    public function __construct(private Timezone $timezone)
     {
-        $this->timezone = $timezone;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

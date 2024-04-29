@@ -2,8 +2,7 @@ services:
     OHMedia\TimezoneBundle\Service\Timezone:
         arguments: ["@security.token_storage", "%oh_media_timezone.timezone%"]
 
-    oh_media_timezone.timezone:
-        alias: OHMedia\TimezoneBundle\Service\Timezone
+    oh_media_timezone.timezone: '@OHMedia\TimezoneBundle\Service\Timezone'
 
     OHMedia\TimezoneBundle\EventListener\TimezoneListener:
         arguments: ["@oh_media_timezone.timezone"]
