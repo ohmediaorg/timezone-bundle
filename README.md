@@ -51,7 +51,11 @@ use Symfony\Component\Form\Extension\Core\Type\TimezoneType;
 
 // ...
 
-$builder->add('timezone', TimezoneType::class);
+$builder->add('timezone', TimezoneType::class, [
+    'attr' => [
+        'class' => 'nice-select2',
+    ],
+]);
 ```
 
 # Forms
