@@ -9,14 +9,16 @@ DateTime values are displayed properly for the user.
 
 # Installation
 
-Enable the bundle in `config/bundles.php`:
+Update `composer.json` by adding this to the `repositories` array:
 
-```php
-return [
-    // ...
-    OHMedia\TimezoneBundle\OHMediaTimezoneBundle::class => ['all' => true],
-];
+```json
+{
+    "type": "vcs",
+    "url": "https://github.com/ohmediaorg/timezone-bundle"
+}
 ```
+
+Then run `composer require ohmediaorg/timezone-bundle:dev-main`.
 
 Update `config/packages/doctrine.yml`:
 
