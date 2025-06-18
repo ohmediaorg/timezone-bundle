@@ -22,14 +22,29 @@ final class DateTimeUtil
 
     public static function isFuture(\DateTimeInterface $datetime): bool
     {
-        $clone = clone $datetime;
-        $clone->setTimezone(self::getDateTimeZoneUtc());
-
-        return $clone > self::getDateTimeUtc();
+        return self::toUtc($datetime) > self::getDateTimeUtc();
     }
 
     public static function isPast(\DateTimeInterface $datetime): bool
     {
         return !self::isFuture($datetime);
+    }
+
+    public static function toUtc(\DateTimeInterface $datetime): \DateTimeInterface
+    {
+        $clone = clone $datetime;
+        $clone->setTimezone(self::getDateTimeZoneUtc());
+
+        return $clone;
+    }
+
+    public static function diff(\DateTimeInterface $a, \DateTimeInterface $b): \DateInterval
+    {
+        return self::toUtc($a)->diff(self::toUtc($b));
+    }
+
+    public static function getAge(\DateTimeInterface $birthDate): int
+    {
+        return self::diff(self::getDateTimeUtc(), $birthDate)->y;
     }
 }
