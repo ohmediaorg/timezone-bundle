@@ -10,6 +10,5 @@ services:
             - '../src/OHMediaTimezoneBundle.php'
 
     OHMedia\TimezoneBundle\EventListener\TimezoneListener:
-        autowire: true
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
