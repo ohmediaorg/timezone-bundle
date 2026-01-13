@@ -1,14 +1,15 @@
 services:
-    OHMedia\TimezoneBundle\Service\Timezone:
-        arguments: ["@security.token_storage", "%oh_media_timezone.timezone%"]
+    _defaults:
+        autowire: true
+        autoconfigure: true
 
-    oh_media_timezone.timezone: '@OHMedia\TimezoneBundle\Service\Timezone'
+    OHMedia\UtilityBundle\:
+        resource: '../src/'
+        exclude:
+            - '../src/Entity/'
+            - '../src/OHMediaUtilityBundle.php'
 
     OHMedia\TimezoneBundle\EventListener\TimezoneListener:
-        arguments: ["@oh_media_timezone.timezone"]
+        autowire: true
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
-
-    OHMedia\TimezoneBundle\Form\Type\DateTimeType:
-        arguments: ["@oh_media_timezone.timezone"]
-        tags: ["form.type"]
