@@ -3,11 +3,11 @@ services:
         autowire: true
         autoconfigure: true
 
-    OHMedia\UtilityBundle\:
+    OHMedia\TimezoneBundle\:
         resource: '../src/'
         exclude:
             - '../src/Entity/'
-            - '../src/OHMediaUtilityBundle.php'
+            - '../src/OHMediaTimezoneBundle.php'
 
     OHMedia\TimezoneBundle\EventListener\TimezoneListener:
         autowire: true
