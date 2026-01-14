@@ -3,13 +3,15 @@
 namespace OHMedia\TimezoneBundle\Service;
 
 use OHMedia\TimezoneBundle\Traits\TimezoneUserTrait;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class Timezone
 {
     public function __construct(
         private TokenStorageInterface $tokenStorage,
-        private string $defaultTimezone
+        #[Autowire('%oh_media_timezone.timezone%')]
+        private string $defaultTimezone,
     ) {
     }
 
