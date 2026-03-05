@@ -33,9 +33,8 @@ final class DateTimeUtil
     public static function toUtc(\DateTimeInterface $datetime): \DateTimeInterface
     {
         $clone = clone $datetime;
-        $clone->setTimezone(self::getDateTimeZoneUtc());
 
-        return $clone;
+        return $clone->setTimezone(self::getDateTimeZoneUtc());
     }
 
     public static function diff(\DateTimeInterface $a, \DateTimeInterface $b): \DateInterval
