@@ -16,10 +16,7 @@ class UTCDateTimeType extends DateTimeType
      */
     private static $utc;
 
-    /**
-     * {@inheritDoc}
-     */
-    public function convertToDatabaseValue($value, AbstractPlatform $platform): mixed
+    public function convertToDatabaseValue($value, AbstractPlatform $platform): ?string
     {
         if ($value instanceof \DateTime) {
             $value = $value->setTimezone(self::getUtc());
@@ -28,12 +25,9 @@ class UTCDateTimeType extends DateTimeType
         return parent::convertToDatabaseValue($value, $platform);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function convertToPHPValue($value, AbstractPlatform $platform): mixed
+    public function convertToPHPValue($value, AbstractPlatform $platform): ?\DateTime
     {
-        if ($value === null || $value instanceof \DateTimeInterface) {
+        if (null === $value || $value instanceof \DateTime) {
             return $value;
         }
 
@@ -43,19 +37,14 @@ class UTCDateTimeType extends DateTimeType
             self::getUtc()
         );
 
-        if ($dateTime !== false) {
+        if (false !== $dateTime) {
             return $dateTime;
         }
 
         try {
             return new \DateTime($value, self::getUtc());
         } catch (\Exception $e) {
-            throw ConversionException::conversionFailedFormat(
-                $value,
-                $this->getName(),
-                $platform->getDateTimeFormatString(),
-                $e,
-            );
+            throw ConversionException::conversionFailedFormat($value, $this->getName(), $platform->getDateTimeFormatString(), $e);
         }
     }
 
